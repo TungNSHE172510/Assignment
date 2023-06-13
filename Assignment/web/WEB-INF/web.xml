@@ -33,10 +33,6 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CalServlet</servlet-name>
-        <url-pattern>/cal</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>WelcomeServlet</servlet-name>
         <url-pattern>/WelcomeServlet</url-pattern>
     </servlet-mapping>
