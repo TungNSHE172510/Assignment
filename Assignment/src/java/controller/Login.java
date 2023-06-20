@@ -37,9 +37,9 @@ public class Login extends HttpServlet {
             String p = request.getParameter("pass");
             //Get data from XML
             //ServletContext sc=getServletContext();
-            String user = getInitParameter("username");
-            String pass = getInitParameter("password");
-            if (u.equals("abc") && p.equals("123")) {
+            String user = getServletContext().getInitParameter("username");
+            String pass = getServletContext().getInitParameter("password");
+            if (user.equals(u) && pass.equals(p)) {
                 response.sendRedirect("WelcomeServlet");
             } else {
                 out.write("login fail");
