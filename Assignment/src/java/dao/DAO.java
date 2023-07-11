@@ -29,9 +29,9 @@ public class DAO {
                 list.add(new Product(rs.getInt(1),
                 rs.getString(2),
                 rs.getString(3),
-                rs.getDouble(4),
+                rs.getDouble(8),
+                rs.getString(4),
                 rs.getString(5),
-                rs.getString(8),
                 rs.getString(9)));
             }
         } catch (Exception e){
