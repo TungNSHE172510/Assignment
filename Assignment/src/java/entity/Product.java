@@ -17,23 +17,19 @@ public class Product {
     private String description;
     private String capacity;
 
-    public Product() {
-    }
-    
-    public Product(int id, String name, String image, double price, String title, String description) {
+    public Product(int id, String name, String image, double price, String title, String description, String capacity) {
         this.id = id;
         this.name = name;
         this.image = image;
         this.price = price;
         this.title = title;
-        this.description = description; 
+        this.description = description;
         this.capacity = capacity;
     }
 
-    public Product(int aInt, String string, String string0, double aDouble, String string1, String string2, String string3) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Product() {
     }
-
+    
     public int getId() {
         return id;
     }

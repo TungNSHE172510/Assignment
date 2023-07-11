@@ -20,9 +20,9 @@ public class DAO {
     
     public List<Product> getAllProduct(){
         List<Product> list = new ArrayList<>();
-        String query = "";
+        String query = "select * from Product";
         try{
-            conn = new DBContext().getConnection();
+            conn = new DBContext().getConnection();//mo ket noi sql sv
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while(rs.next()){
@@ -31,12 +31,19 @@ public class DAO {
                 rs.getString(3),
                 rs.getDouble(4),
                 rs.getString(5),
-                rs.getString(6),
-                rs.getString(7)));
+                rs.getString(8),
+                rs.getString(9)));
             }
         } catch (Exception e){
     }    
         
     return list;
+    }
+    public static void main(String[] args) {
+        DAO dao = new DAO();
+        List<Product> list = dao.getAllProduct();
+        for (Product o : list){
+            System.out.println(o);
+        }
     }
 }
