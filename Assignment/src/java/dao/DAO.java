@@ -20,7 +20,7 @@ public class DAO {
     
     public List<Product> getAllProduct(){
         List<Product> list = new ArrayList<>();
-        String query = "select * from Product";
+        String query = "select * from product";
         try{
             conn = new DBContext().getConnection();//mo ket noi sql sv
             ps = conn.prepareStatement(query);
@@ -47,3 +47,4 @@ public class DAO {
         }
     }
 }
+ 

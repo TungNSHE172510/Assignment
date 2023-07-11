@@ -17,6 +17,9 @@ public class Product {
     private String description;
     private String capacity;
 
+    public Product() {
+    }
+    
     public Product(int id, String name, String image, double price, String title, String description, String capacity) {
         this.id = id;
         this.name = name;
@@ -25,9 +28,6 @@ public class Product {
         this.title = title;
         this.description = description;
         this.capacity = capacity;
-    }
-
-    public Product() {
     }
     
     public int getId() {
