@@ -35,6 +35,7 @@ public class LoginControl extends HttpServlet {
         DAO dao = new DAO();
         Account a = dao.login(user, pass);
         if(a==null){
+            request.setAttribute("alert", "Wrong Usernam or Password!");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else{
             request.getRequestDispatcher("home").forward(request, response);
