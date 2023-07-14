@@ -16,7 +16,7 @@
         <!--begin of menu-->
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="home">Shoes</a>
+                <a class="navbar-brand" href="home">Trang chủ</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -56,7 +56,7 @@
         </nav>
         <section class="jumbotron text-center">
             <div class="container">
-                <h1 class="jumbotron-heading">Cua hang noi com dien</h1>
+                <h1 class="jumbotron-heading">Siêu thị nồi cơm</h1>
                 <p class="lead text-muted mb-0">Uy tín tạo nên thương hiệu</p>
             </div>
         </section>
@@ -66,7 +66,7 @@
                 <div class="col">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="Home.jsp">Home</a></li>
+                            <li class="breadcrumb-item"><a href="homepage.jsp">Home</a></li>
                             <li class="breadcrumb-item"><a href="#">Category</a></li>
                             <li class="breadcrumb-item active" aria-current="#">Sub-category</li>
                         </ol>
@@ -102,13 +102,13 @@
                         <c:forEach items="${listP}" var="o">
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="card">
-                                    <img class="card-img-top" src="${o.image}" alt="Card image cap">
+                                    <img class="card-img-top" src="${o.getImage()}" alt="Card image cap">
                                     <div class="card-body">
-                                        <h4 class="card-title show_txt"><a href="#" title="View Product">${o.name}</a></h4>
-                                        <p class="card-text show_txt">${o.title}</p>
+                                        <h4 class="card-title show_txt"><a href="#" title="View Product"></a></h4>
+                                        <p class="card-text show_txt"></p>
                                         <div class="row">
                                             <div class="col">
-                                                <p class="btn btn-danger btn-block">${o.price} $</p>
+                                                <p class="btn btn-danger btn-block">$ $</p>
                                             </div>
                                             <div class="col">
                                                 <a href="#" class="btn btn-success btn-block">Add to cart</a>
@@ -118,6 +118,7 @@
                                 </div>
                             </div>
                         </c:forEach>
+                           
                     </div>
                 </div>
 

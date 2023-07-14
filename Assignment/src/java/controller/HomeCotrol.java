@@ -9,18 +9,17 @@ import entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.HashSet;
 import java.util.List;
 
 /**
  *
  * @author acer
  */
-@WebServlet(name = "HomeControl", urlPatterns = {"/homecontrol"})
-public class HomeControl extends HttpServlet {
+public class HomeCotrol extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,12 +33,12 @@ public class HomeControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //step1
-        DAO dao = new DAO();
+         DAO dao = new DAO();
         List<Product> list = dao.getAllProduct();
-        //step2
+        
         request.setAttribute("listP", list);
-        request.getRequestDispatcher("homepage.jsp").forward(request, response);
+        request.getRequestDispatcher("homepage.jsp").forward(request,response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -18,8 +18,8 @@ public class DAO {
     PreparedStatement ps = null;
     ResultSet rs = null; 
     
-    public List<Product> getAllProduct(){
-        List<Product> list = new ArrayList<>();
+    public ArrayList<Product> getAllProduct(){
+        ArrayList<Product> list = new ArrayList<>();
         String query = "select * from product";
         try{
             conn = new DBContext().getConnection();//mo ket noi sql sv
@@ -41,7 +41,7 @@ public class DAO {
     }
     public static void main(String[] args) {
         DAO dao = new DAO();
-        List<Product> list = dao.getAllProduct();
+        ArrayList<Product> list = dao.getAllProduct();
         for (Product o : list){
             System.out.println(o);
         }
