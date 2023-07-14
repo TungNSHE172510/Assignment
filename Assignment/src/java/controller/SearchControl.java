@@ -41,6 +41,7 @@ public class SearchControl extends HttpServlet {
         request.setAttribute("listP", list);
         request.setAttribute("listC", listC);
         request.setAttribute("last", last);
+        request.setAttribute("SearchValue", search);
         request.getRequestDispatcher("homepage.jsp").forward(request, response);
     }
 
