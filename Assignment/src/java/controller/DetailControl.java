@@ -5,6 +5,7 @@
 package controller;
 
 import dao.DAO;
+import entity.Category;
 import entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +14,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 /**
  *
@@ -38,9 +40,11 @@ public class DetailControl extends HttpServlet {
         
         Product p = dao.getProductByID(id);
         Product last = dao.getLast();
+        ArrayList<Category> listC = dao.getAllCategory(); 
         
         request.setAttribute("detail", p);
         request.setAttribute("last", last);
+        request.setAttribute("listC", listC);
         request.getRequestDispatcher("detail.jsp").forward(request, response);
     }
 

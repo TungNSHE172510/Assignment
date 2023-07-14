@@ -90,7 +90,7 @@
                         <div class="card-header bg-success text-white text-uppercase">Sản phẩm mới nhất</div>
                         <div class="card-body">
                             <img class="img-fluid" src="${last.image}" />
-                            <h5 class="card-title">${last.name}</h5>
+                            <a href="detail?pid=${last.id}" title="View Product">${o.name}<h5 class="card-title">${last.name}</h5></a>
                             <p class="card-text">${last.title}</p>
                             <p class="bloc_left_price">${last.price} vnd</p>
                         </div>

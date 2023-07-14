@@ -98,7 +98,7 @@ public class DAO {
     }
     
     public Product getProductByID(String id){
-        String query = "select * from product where id=?";
+        String query = "select * from product where pid=?";
         try{
             conn = new DBContext().getConnection();//mo ket noi sql sv
             ps = conn.prepareStatement(query);

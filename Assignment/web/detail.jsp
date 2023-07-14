@@ -110,14 +110,15 @@
                 </div>
             </div>
         </div>
+        
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="card bg-light mb-3">
-                            <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
-                            <ul class="list-group category_block">
-                            <c:forEach begin="1" end="2" var="o">
-                                <li class="list-group-item text-white"><a href="#"></a></li>
+                            <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Danh mục</div>
+                        <ul class="list-group category_block">
+                            <c:forEach items="${listC}" var="o">
+                                <li class="list-group-item text-white ${tag == o.cid ? "active":""}"><a href="category?cid=${o.cid}">${o.cname}</a></li>
                             </c:forEach>
                         </ul>
                     </div>
@@ -125,7 +126,8 @@
                         <div class="card-header bg-success text-white text-uppercase">Sản phẩm mới nhất</div>
                         <div class="card-body">
                             <img class="img-fluid" src="${last.image}" />
-                            <h5 class="card-title">${last.name}</h5>
+                            <a href="detail?pid=${last.id}" title="View Product">${o.name}<h5 class="card-title">${last.name}</h5></a>
+                            <p class="card-text">${last.title}</p>
                             <p class="bloc_left_price">${last.price} $</p>
                         </div>
                     </div>
@@ -149,7 +151,7 @@
 
                                         <p class="price-detail-wrap"> 
                                             <span class="price h3 text-warning"> 
-                                                <span class="currency">vnd</span><span class="num">${detail.price}</span>
+                                                <span class="currency"></span><span class="num">${detail.price}</span> VND
                                             </span> 
                                             <!--<span>/per kg</span>--> 
                                         </p> <!-- price-detail-wrap .// -->
