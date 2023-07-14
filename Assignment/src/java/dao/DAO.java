@@ -97,6 +97,27 @@ public class DAO {
     return list;
     }
     
+    public Product getProductByID(String id){
+        String query = "select * from product where id=?";
+        try{
+            conn = new DBContext().getConnection();//mo ket noi sql sv
+            ps = conn.prepareStatement(query);
+            ps.setString(1,id);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                return new Product(rs.getInt(1),
+                rs.getString(2),
+                rs.getString(3),
+                rs.getDouble(8),
+                rs.getString(4),
+                rs.getString(5),
+                rs.getString(9));
+            }
+        } catch (Exception e){
+    }    
+    return null;
+    }
+    
     public static void main(String[] args) {
         DAO dao = new DAO();
         ArrayList<Product> list = dao.getAllProduct();

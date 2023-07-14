@@ -4,19 +4,22 @@
  */
 package controller;
 
-import jakarta.servlet.ServletContext;
+import dao.DAO;
+import entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author AD
+ * @author acer
  */
-public class Login extends HttpServlet {
+@WebServlet(name = "DetailControl", urlPatterns = {"/detail"})
+public class DetailControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,24 +33,15 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            //Get data from HTML form  
-            String u = request.getParameter("user");
-            String p = request.getParameter("pass");
-            //Get data from XML
-            //ServletContext sc=getServletContext();
-            String user = getServletContext().getInitParameter("username");
-            String pass = getServletContext().getInitParameter("password");
-            if (user.equals(u) && pass.equals(p)) {
-                response.sendRedirect("WelcomeServlet");
-            } else {
-                out.write("login fail");
-                out.write("user: abc    pass: 123");
-                response.sendRedirect("login.html");
-                //request.getRequestDispatcher("login.html").include(request, response);
-            }
-        }
+        String id = request.getParameter("pid");
+        DAO dao = new DAO();
+        
+        Product p = dao.getProductByID(id);
+        Product last = dao.getLast();
+        
+        request.setAttribute("detail", p);
+        request.setAttribute("last", last);
+        request.getRequestDispatcher("detail.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
