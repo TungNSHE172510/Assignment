@@ -5,6 +5,7 @@
 package dao;
 
 import context.DBContext;
+import entity.Category;
 import entity.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,13 +37,47 @@ public class DAO {
             }
         } catch (Exception e){
     }    
-        
     return list;
+    }
+    public ArrayList<Category> getAllCategory(){
+        ArrayList<Category> list = new ArrayList<>();
+        String query = "select * from Category";
+        try{
+            conn = new DBContext().getConnection();//mo ket noi sql sv
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(new Category(rs.getInt(1),
+                rs.getString(2)));
+            }
+        } catch (Exception e){
+    }    
+    return list;
+    }
+    public Product getLast(){
+        String sql = "select top 1 * from product order by pid desc";
+        try{
+            conn = new DBContext().getConnection();//mo ket noi sql sv
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                return new Product(rs.getInt(1),
+                rs.getString(2),
+                rs.getString(3),
+                rs.getDouble(8),
+                rs.getString(4),
+                rs.getString(5),
+                rs.getString(9));
+            }
+        } catch (Exception e){
+    }    
+        return null;
     }
     public static void main(String[] args) {
         DAO dao = new DAO();
         ArrayList<Product> list = dao.getAllProduct();
-        for (Product o : list){
+        ArrayList<Category> listC = dao.getAllCategory();
+        for (Category o : listC){
             System.out.println(o);
         }
     }
