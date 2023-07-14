@@ -75,13 +75,13 @@ public class DAO {
         return null;
     }
     
-    public ArrayList<Product> getProductByCID(int cid){
+    public ArrayList<Product> getProductByCID(String cid){
         ArrayList<Product> list = new ArrayList<>();
         String query = "select * from product where cid=?";
         try{
             conn = new DBContext().getConnection();//mo ket noi sql sv
             ps = conn.prepareStatement(query);
-            ps.setInt(1,cid);
+            ps.setString(1,cid);
             rs = ps.executeQuery();
             while(rs.next()){
                 list.add(new Product(rs.getInt(1),

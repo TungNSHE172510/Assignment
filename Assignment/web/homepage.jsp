@@ -66,7 +66,7 @@
                 <div class="col">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="homepage.jsp">Home</a></li>
+                            <li class="breadcrumb-item"><a href="home">Home</a></li>
                             <li class="breadcrumb-item"><a href="#">Category</a></li>
                             <li class="breadcrumb-item active" aria-current="#">Sub-category</li>
                         </ol>
@@ -78,7 +78,7 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="card bg-light mb-3">
-                        <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
+                        <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Danh mục</div>
                         <ul class="list-group category_block">
                             <c:forEach items="${listC}" var="o">
                                 <li class="list-group-item text-white"><a href="category?cid=${o.cid}">${o.cname}</a></li>
