@@ -102,13 +102,13 @@
                         <c:forEach items="${listP}" var="o">
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="card">
-                                    <img class="card-img-top" src="${o.getImage()}" alt="Card image cap">
+                                    <img class="card-img-top" src="${o.image}" alt="Card image cap">
                                     <div class="card-body">
-                                        <h4 class="card-title show_txt"><a href="#" title="View Product"></a></h4>
-                                        <p class="card-text show_txt"></p>
+                                        <h5 class="card-title show_txt"><a href="#" title="View Product">${o.name}</a></h5>
+                                        <p class="card-text show_txt">${o.title}</p>
                                         <div class="row">
                                             <div class="col">
-                                                <p class="btn btn-danger btn-block">$ $</p>
+                                                <p class="btn btn-danger btn-block">${o.price} vnd</p>
                                             </div>
                                             <div class="col">
                                                 <a href="#" class="btn btn-success btn-block">Add to cart</a>
