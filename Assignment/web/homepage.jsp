@@ -81,7 +81,7 @@
                         <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Danh mục</div>
                         <ul class="list-group category_block">
                             <c:forEach items="${listC}" var="o">
-                                <li class="list-group-item text-white"><a href="category?cid=${o.cid}">${o.cname}</a></li>
+                                <li class="list-group-item text-white ${tag == o.cid ? "active":""}"><a href="category?cid=${o.cid}">${o.cname}</a></li>
                             </c:forEach>
 
                         </ul>

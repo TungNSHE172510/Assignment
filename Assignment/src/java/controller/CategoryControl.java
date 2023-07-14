@@ -35,12 +35,16 @@ public class CategoryControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String cateID = request.getParameter("cid");
         DAO dao = new DAO();
+        
         ArrayList<Product> list = dao.getProductByCID(cateID);
         ArrayList<Category> listC = dao.getAllCategory(); 
         Product last = dao.getLast();
+        
         request.setAttribute("listP", list);
         request.setAttribute("listC", listC);
         request.setAttribute("last", last);
+        request.setAttribute("tag", cateID);
+        
         request.getRequestDispatcher("homepage.jsp").forward(request, response);
     }
 
