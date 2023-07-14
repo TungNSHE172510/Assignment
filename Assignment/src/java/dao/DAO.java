@@ -118,6 +118,28 @@ public class DAO {
     return null;
     }
     
+    public ArrayList<Product> searchByName(String search){
+        ArrayList<Product> list = new ArrayList<>();
+        String query = "select * from Product where name like ?";
+        try{
+            conn = new DBContext().getConnection();//mo ket noi sql sv
+            ps = conn.prepareStatement(query);
+            ps.setString(1,"%"+search+"%");
+            rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(new Product(rs.getInt(1),
+                rs.getString(2),
+                rs.getString(3),
+                rs.getDouble(8),
+                rs.getString(4),
+                rs.getString(5),
+                rs.getString(9)));
+            }
+        } catch (Exception e){
+    }    
+    return list;
+    }
+    
     public static void main(String[] args) {
         DAO dao = new DAO();
         ArrayList<Product> list = dao.getAllProduct();
