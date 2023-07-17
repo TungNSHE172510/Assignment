@@ -6,17 +6,17 @@ package controller;
 
 import dao.DAO;
 import entity.Account;
-import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  *
  * @author acer
  */
-public class LoginControl extends HttpServlet {
+public class SignupControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,17 +30,23 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String user = request.getParameter("user");
-        String pass = request.getParameter("pass");
-        DAO dao = new DAO();
-        Account a = dao.login(user, pass);
-        if(a==null){
-            request.setAttribute("alert", "Sai tài khoản hoặc mật khẩu!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else{
-            response.sendRedirect("home");
-        }
-        
+         String user = request.getParameter("user");
+         String pass = request.getParameter("pass");
+         String pass2 = request.getParameter("repass");
+         if(!pass.equals(pass2)){
+             request.setAttribute("alert", "Mật khẩu không trùng khớp!");
+             request.getRequestDispatcher("login.jsp").forward(request, response);
+         } else {
+             DAO dao = new DAO();
+             Account a = dao.checkAccount(user);
+             if(a == null){
+                 dao.signup(user,pass);
+                 response.sendRedirect("home");
+             } else {
+                 request.setAttribute("alert", "Tài khoản đã tồn tại!");
+                 request.getRequestDispatcher("login.jsp").forward(request, response);
+             }
+         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -30,6 +30,7 @@
                 <p class="text-danger alert">
                 ${alert}
                 </p>
+                </p>
                 <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
                 <hr>
                 <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up New Account</button>
