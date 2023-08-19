@@ -118,14 +118,25 @@
                                 <textarea name="description" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Category</label>
+                                <label>Capacity</label>
+                                <textarea name="capacity" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Danh mục</label>
                                 <select name="category" class="form-select" aria-label="Default select example">
                                     <c:forEach items="${listC}" var="o">
                                         <option value="${o.cid}">${o.cname}</option>
                                     </c:forEach>
                                 </select>
                             </div>
-
+                            <div class="form-group">
+                                <label>Hãng</label>
+                                <select name="manufacturer" class="form-select" aria-label="Default select example">
+                                    <c:forEach items="${listM}" var="o">
+                                        <option value="${o.mid}">${o.mname}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">

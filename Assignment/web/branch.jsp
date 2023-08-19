@@ -5,8 +5,18 @@
         <div class="card-header bg-primary text-white text-uppercase">Danh mục</div>
         <ul class="list-group category_block">
             <c:forEach items="${listC}" var="o">
-                <li class="list-group-item text-white ${tag == o.cid ? "active":""}"><a href="category?cid=${o.cid}">${o.cname}</a></li>
+                <li class="list-group-item text-white ${tag == o.cid ? "":""}"><a href="category?cid=${o.cid}">${o.cname}</a></li>
             </c:forEach>
+            
+        </ul>
+    </div>
+    <div class="card bg-light mb-3">
+        <div class="card-header bg-primary text-white text-uppercase">Hãng</div>
+        <ul class="list-group category_block">
+            <c:forEach items="${listM}" var="o">
+                <li class="list-group-item text-white ${tag == o.mid ? "":""}"><a href="manufacturer?mid=${o.mid}">${o.mname}</a></li>
+            </c:forEach>
+            
         </ul>
     </div>
     <div class="card bg-light mb-3">

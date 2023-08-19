@@ -59,6 +59,10 @@
         <servlet-name>AddControl</servlet-name>
         <servlet-class>controller.AddControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManufacturerControl</servlet-name>
+        <servlet-class>controller.ManufacturerControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>WelcomeServlet</servlet-name>
         <url-pattern>/WelcomeServlet</url-pattern>
@@ -98,6 +102,10 @@
     <servlet-mapping>
         <servlet-name>AddControl</servlet-name>
         <url-pattern>/add</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManufacturerControl</servlet-name>
+        <url-pattern>/manufacturer</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

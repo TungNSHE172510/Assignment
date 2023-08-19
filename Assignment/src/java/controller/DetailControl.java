@@ -6,6 +6,7 @@ package controller;
 
 import dao.DAO;
 import entity.Category;
+import entity.Manufacturer;
 import entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -41,10 +42,12 @@ public class DetailControl extends HttpServlet {
         Product p = dao.getProductByID(id);
         Product last = dao.getLast();
         ArrayList<Category> listC = dao.getAllCategory(); 
+        ArrayList<Manufacturer> listM = dao.getAllManufacturer(); 
         
         request.setAttribute("detail", p);
         request.setAttribute("last", last);
         request.setAttribute("listC", listC);
+        request.setAttribute("listM", listM);
         request.getRequestDispatcher("detail.jsp").forward(request, response);
     }
 

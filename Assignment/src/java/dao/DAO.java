@@ -7,6 +7,7 @@ package dao;
 import context.DBContext;
 import entity.Account;
 import entity.Category;
+import entity.Manufacturer;
 import entity.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -39,6 +40,7 @@ public class DAO {
     }    
     return list;
     }
+    
     public ArrayList<Category> getAllCategory(){
         ArrayList<Category> list = new ArrayList<>();
         String query = "select * from Category";
@@ -48,6 +50,22 @@ public class DAO {
             rs = ps.executeQuery();
             while(rs.next()){
                 list.add(new Category(rs.getInt(1),
+                rs.getString(2)));
+            }
+        } catch (Exception e){
+    }    
+    return list;
+    }
+    
+    public ArrayList<Manufacturer> getAllManufacturer(){
+        ArrayList<Manufacturer> list = new ArrayList<>();
+        String query = "select * from Manufacturer";
+        try{
+            conn = new DBContext().getConnection();//mo ket noi sql sv
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(new Manufacturer(rs.getInt(1),
                 rs.getString(2)));
             }
         } catch (Exception e){
@@ -78,6 +96,28 @@ public class DAO {
     public ArrayList<Product> getProductByCID(String cid){
         ArrayList<Product> list = new ArrayList<>();
         String query = "select * from product where cid=?";
+        try{
+            conn = new DBContext().getConnection();//mo ket noi sql sv
+            ps = conn.prepareStatement(query);
+            ps.setString(1,cid);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(new Product(rs.getInt(1),
+                rs.getString(2),
+                rs.getString(3),
+                rs.getDouble(8),
+                rs.getString(4),
+                rs.getString(5),
+                rs.getString(9)));
+            }
+        } catch (Exception e){
+    }    
+    return list;
+    }
+    
+    public ArrayList<Product> getProductByMID(String cid){
+        ArrayList<Product> list = new ArrayList<>();
+        String query = "select * from product where mid=?";
         try{
             conn = new DBContext().getConnection();//mo ket noi sql sv
             ps = conn.prepareStatement(query);
