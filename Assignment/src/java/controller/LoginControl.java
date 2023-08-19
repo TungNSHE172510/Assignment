@@ -11,6 +11,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -38,6 +39,8 @@ public class LoginControl extends HttpServlet {
             request.setAttribute("alert", "Sai tài khoản hoặc mật khẩu!");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else{
+            HttpSession session = request.getSession();
+            session.setAttribute("a", a);
             response.sendRedirect("home");
         }
         

@@ -97,6 +97,28 @@ public class DAO {
     return list;
     }
     
+    public ArrayList<Product> getProductByUID(int id){
+        ArrayList<Product> list = new ArrayList<>();
+        String query = "select * from product where sellId=?";
+        try{
+            conn = new DBContext().getConnection();//mo ket noi sql sv
+            ps = conn.prepareStatement(query);
+            ps.setInt(1,id);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(new Product(rs.getInt(1),
+                rs.getString(2),
+                rs.getString(3),
+                rs.getDouble(8),
+                rs.getString(4),
+                rs.getString(5),
+                rs.getString(9)));
+            }
+        } catch (Exception e){
+    }    
+    return list;
+    }
+    
     public Product getProductByID(String id){
         String query = "select * from product where pid=?";
         try{
@@ -189,7 +211,18 @@ public class DAO {
             ps = conn.prepareStatement(sql);
             ps.setString(1, user);
             ps.setString(2, pass);
-            ps.executeUpdate();
+            ps.executeUpdate();//ko tra ve bang result
+        } catch (Exception e) {
+        }
+    }
+    
+    public void delete(String pid){
+        String sql = "delete from product where pid=?";
+            try {
+            conn = new DBContext().getConnection();//mo ket noi sql sv
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, pid);
+            ps.executeUpdate();//ko tra ve bang result
         } catch (Exception e) {
         }
     }

@@ -43,6 +43,22 @@
         <servlet-name>SignupControl</servlet-name>
         <servlet-class>controller.SignupControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutControl</servlet-name>
+        <servlet-class>controller.LogoutControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductManagerControl</servlet-name>
+        <servlet-class>controller.ProductManagerControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteControl</servlet-name>
+        <servlet-class>controller.DeleteControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddControl</servlet-name>
+        <servlet-class>controller.AddControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>WelcomeServlet</servlet-name>
         <url-pattern>/WelcomeServlet</url-pattern>
@@ -66,6 +82,22 @@
     <servlet-mapping>
         <servlet-name>SignupControl</servlet-name>
         <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutControl</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductManagerControl</servlet-name>
+        <url-pattern>/productmanage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteControl</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddControl</servlet-name>
+        <url-pattern>/add</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
