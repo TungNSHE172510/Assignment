@@ -5,23 +5,19 @@
 package controller;
 
 import dao.DAO;
-import entity.Category;
-import entity.Manufacturer;
-import entity.Product;
+import entity.Account;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
  * @author acer
  */
-@WebServlet(name = "DetailControl", urlPatterns = {"/detail"})
-public class DetailControl extends HttpServlet {
+public class LoginControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,19 +31,19 @@ public class DetailControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("pid");
+        String user = request.getParameter("user");
+        String pass = request.getParameter("pass");
         DAO dao = new DAO();
+        Account a = dao.login(user, pass);
+        if(a==null){
+            request.setAttribute("alert", "Sai tài khoản hoặc mật khẩu!");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        } else{
+            HttpSession session = request.getSession();
+            session.setAttribute("a", a);
+            response.sendRedirect("home");
+        }
         
-        Product p = dao.getProductByID(id);
-        Product last = dao.getLast();
-        ArrayList<Category> listC = dao.getAllCategory(); 
-        ArrayList<Manufacturer> listM = dao.getAllManufacturer(); 
-        
-        request.setAttribute("detail", p);
-        request.setAttribute("last", last);
-        request.setAttribute("listC", listC);
-        request.setAttribute("listM", listM);
-        request.getRequestDispatcher("detail.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -71,18 +71,6 @@
         <servlet-name>EditControl</servlet-name>
         <servlet-class>controller.EditControl</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>DeleteUserControl</servlet-name>
-        <servlet-class>controller.DeleteUserControl</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UserManageControl</servlet-name>
-        <servlet-class>controller.UserManageControl</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>LoadUserControl</servlet-name>
-        <servlet-class>controller.LoadUserControl</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>WelcomeServlet</servlet-name>
         <url-pattern>/WelcomeServlet</url-pattern>
@@ -134,18 +122,6 @@
     <servlet-mapping>
         <servlet-name>EditControl</servlet-name>
         <url-pattern>/edit</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteUserControl</servlet-name>
-        <url-pattern>/deleteuser</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UserManageControl</servlet-name>
-        <url-pattern>/usermanage</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>LoadUserControl</servlet-name>
-        <url-pattern>/loaduser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

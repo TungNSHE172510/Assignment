@@ -41,25 +41,6 @@ public class DAO {
     return list;
     }
     
-    public ArrayList<Account> getAllUser(){
-        ArrayList<Account> list = new ArrayList<>();
-        String query = "select * from account";
-        try{
-            conn = new DBContext().getConnection();//mo ket noi sql sv
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
-            while(rs.next()){
-                list.add(new Account(rs.getInt(1),
-                rs.getString(2),
-                rs.getString(3),
-                rs.getInt(4),
-                rs.getInt(5)));
-            }
-        } catch (Exception e){
-    }    
-    return list;
-    }
-    
     public ArrayList<Category> getAllCategory(){
         ArrayList<Category> list = new ArrayList<>();
         String query = "select * from Category";
@@ -221,6 +202,50 @@ public class DAO {
     return list;
     }
     
+    public ArrayList<Product> searchByPriceBigger(String search){
+        ArrayList<Product> list = new ArrayList<>();
+        String query = "select * from Product where price > ?";
+        try{
+            conn = new DBContext().getConnection();//mo ket noi sql sv
+            ps = conn.prepareStatement(query);
+            ps.setString(1,search);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(new Product(rs.getInt(1),
+                rs.getString(2),
+                rs.getString(3),
+                rs.getDouble(8),
+                rs.getString(4),
+                rs.getString(5),
+                rs.getString(9)));
+            }
+        } catch (Exception e){
+    }    
+    return list;
+    }
+    
+    public ArrayList<Product> searchByPriceSmaller(String search){
+        ArrayList<Product> list = new ArrayList<>();
+        String query = "select * from Product where price < ?";
+        try{
+            conn = new DBContext().getConnection();//mo ket noi sql sv
+            ps = conn.prepareStatement(query);
+            ps.setString(1,search);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(new Product(rs.getInt(1),
+                rs.getString(2),
+                rs.getString(3),
+                rs.getDouble(8),
+                rs.getString(4),
+                rs.getString(5),
+                rs.getString(9)));
+            }
+        } catch (Exception e){
+    }    
+    return list;
+    }
+    
     public Account login(String user, String pass){
         String sql = "select * from Account\n" +
                     "where [user] = ?\n" +
@@ -281,17 +306,6 @@ public class DAO {
             conn = new DBContext().getConnection();//mo ket noi sql sv
             ps = conn.prepareStatement(sql);
             ps.setString(1, pid);
-            ps.executeUpdate();//ko tra ve bang result
-        } catch (Exception e) {
-        }
-    }
-    
-    public void deleteUser(String uid){
-        String sql = "delete from account where uid=?";
-            try {
-            conn = new DBContext().getConnection();//mo ket noi sql sv
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, uid);
             ps.executeUpdate();//ko tra ve bang result
         } catch (Exception e) {
         }

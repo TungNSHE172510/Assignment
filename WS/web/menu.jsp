@@ -17,7 +17,7 @@
                         </c:if>
                         <c:if test="${sessionScope.a.isAdmin == 1}"> 
                         <li class="nav-item">
-                            <a class="nav-link" href="usermanage">Quản lí tài khoản</a>
+                            <a class="nav-link" href="#">Quản lí tài khoản</a>
                         </li>
                         </c:if>
                         <c:if test="${sessionScope.a.isSell == 1}"> 
@@ -38,7 +38,17 @@
                     </ul>
 
                     <form action="search" method="get" class="form-inline my-2 my-lg-0">
+                        
                         <div class="input-group input-group-sm">
+                            <div class="form-group">
+                                <label></label>
+                                <select name="sprice" class="form-select" aria-label="Default select example">
+                          
+                                        <option value="1">Gia toi thieu</option>
+                                        <option value="2">GIa toi da</option>
+
+                                </select>
+                            </div>
                             <input value="${SearchValue}" name="txt" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-secondary btn-number">

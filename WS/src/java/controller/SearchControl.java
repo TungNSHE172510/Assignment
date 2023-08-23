@@ -6,11 +6,9 @@ package controller;
 
 import dao.DAO;
 import entity.Category;
-import entity.Manufacturer;
 import entity.Product;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -20,8 +18,7 @@ import java.util.ArrayList;
  *
  * @author acer
  */
-@WebServlet(name = "DetailControl", urlPatterns = {"/detail"})
-public class DetailControl extends HttpServlet {
+public class SearchControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,19 +32,26 @@ public class DetailControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("pid");
+        String search = request.getParameter("txt");
         DAO dao = new DAO();
-        
-        Product p = dao.getProductByID(id);
-        Product last = dao.getLast();
+        ArrayList<Product> list = dao.searchByName(search);
         ArrayList<Category> listC = dao.getAllCategory(); 
-        ArrayList<Manufacturer> listM = dao.getAllManufacturer(); 
-        
-        request.setAttribute("detail", p);
-        request.setAttribute("last", last);
+        Product last = dao.getLast();
+        String i= request.getParameter("sprice");
+        int u = Integer.parseInt(i);
+        if(u ==1){
+            ArrayList<Product> listSP = dao.searchByPriceBigger(search);
+            request.setAttribute("listP", listSP);
+        }
+        if(u ==2){
+            ArrayList<Product> listSP = dao.searchByPriceSmaller(search);
+            request.setAttribute("listP", listSP);
+        }
+
         request.setAttribute("listC", listC);
-        request.setAttribute("listM", listM);
-        request.getRequestDispatcher("detail.jsp").forward(request, response);
+        request.setAttribute("last", last);
+        request.setAttribute("SearchValue", search);
+        request.getRequestDispatcher("homepage.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

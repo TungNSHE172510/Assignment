@@ -9,19 +9,20 @@ import entity.Category;
 import entity.Manufacturer;
 import entity.Product;
 import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  *
  * @author acer
  */
-@WebServlet(name = "DetailControl", urlPatterns = {"/detail"})
-public class DetailControl extends HttpServlet {
+public class HomeCotrol extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,19 +36,18 @@ public class DetailControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("pid");
-        DAO dao = new DAO();
-        
-        Product p = dao.getProductByID(id);
-        Product last = dao.getLast();
+         DAO dao = new DAO();
+        List<Product> list = dao.getAllProduct();
         ArrayList<Category> listC = dao.getAllCategory(); 
         ArrayList<Manufacturer> listM = dao.getAllManufacturer(); 
+        Product last = dao.getLast();
         
-        request.setAttribute("detail", p);
-        request.setAttribute("last", last);
-        request.setAttribute("listC", listC);
+        request.setAttribute("listP", list);
         request.setAttribute("listM", listM);
-        request.getRequestDispatcher("detail.jsp").forward(request, response);
+        request.setAttribute("listC", listC);
+        request.setAttribute("last", last);
+        request.getRequestDispatcher("homepage.jsp").forward(request,response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
